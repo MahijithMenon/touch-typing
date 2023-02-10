@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const TypingBox = () => {
   const [text, setText] = useState('');
-  const [isCompleted, setIsCompleted] = useState(true);
+  const [isCompleted, setIsCompleted] = useState(false);
   const [eachCount, setEachCount] = useState(0);
   const [totalCount, setTotalCount] = useState(0);
   const [nextChar, setNextChar] = useState('');
@@ -70,7 +70,8 @@ const TypingBox = () => {
       backgroundColor: 'black',
       height: '300px',
       width: '500px',
-      margin: 'auto',
+      marginLeft: 'auto',
+      marginRight: 'auto',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
