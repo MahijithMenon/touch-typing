@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 const TypingBox = () => {
   const [text, setText] = useState('');
   const [isCompleted, setIsCompleted] = useState(false);
-  const [eachCount, setEachCount] = useState(1);
+  const [eachCount, setEachCount] = useState(0);
   const [totalCount, setTotalCount] = useState(0);
   const [nextChar, setNextChar] = useState('');
   const [target, setTarget] = useState("The quick brown fox jumps over the lazy dog");
@@ -56,9 +56,10 @@ const TypingBox = () => {
     // console.log('startTime:' + startTime);
     // console.log('time: '+time);
     if (event.target.value === target) {
-      if(eachCount>=target.length){
+      if(eachCount>=target.length-2){
+        console.log("eachCount: "+eachCount+" target.length: "+target.length)
         setTotalCount((prevCount) => prevCount + eachCount);
-        const newAccuracy = Math.round((target.length/eachCount) * 100);
+        const newAccuracy = Math.round((target.length/(eachCount+1)) * 100);
         // console.log(newAccuracy+" "+target.length+" "+eachCount);
         setAccuracy(newAccuracy);
         setIsCompleted(true);
@@ -70,6 +71,7 @@ const TypingBox = () => {
       else{
         alert("You have to type the whole sentence");
         setText("");
+        setEachCount(0);
       }
     }
   };
